@@ -1,0 +1,37 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string fileName = "student.txt";
+
+        try
+        {
+            // Create and write to file
+            using (StreamWriter writer = new StreamWriter(fileName))
+            {
+                writer.WriteLine("Name: Jitendra");
+                writer.WriteLine("Roll Number: 101");
+                writer.WriteLine("Course: MCA");
+                writer.WriteLine("University: GLA University");
+            }
+
+            Console.WriteLine("Student details written successfully.\n");
+
+            // Read the file
+            using (StreamReader reader = new StreamReader(fileName))
+            {
+                string content = reader.ReadToEnd();
+
+                Console.WriteLine("Student Details:");
+                Console.WriteLine(content);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+    }
+}
